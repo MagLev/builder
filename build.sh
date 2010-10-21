@@ -8,7 +8,7 @@
 #
 
 # vm configuration
-PHARO_VM="/usr/local/lib/squeak/3.11.3-2135/squeakvm"
+PHARO_VM="squeak"
 PHARO_PARAM="-nodisplay -nosound"
 
 # directory configuration
@@ -102,8 +102,8 @@ if [ -d "$OUTPUT_PATH" ] ; then
 	rm -rf "$OUTPUT_PATH"
 fi
 mkdir -p "$OUTPUT_PATH"
-mkdir -p "$BUILD_CACHE/$OUTPUT_NAME"
-ln -s "$BUILD_CACHE/$OUTPUT_NAME" "$OUTPUT_CACHE"
+mkdir -p "$BUILD_CACHE/${JOB_NAME:=$OUTPUT_NAME}"
+ln -s "$BUILD_CACHE/${JOB_NAME:=$OUTPUT_NAME}" "$OUTPUT_CACHE"
 
 # prepare image file and sources
 cp "$INPUT_IMAGE" "$OUTPUT_IMAGE"
